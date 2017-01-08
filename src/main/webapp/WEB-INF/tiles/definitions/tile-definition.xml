@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+
+	<definition name="baseLayout" template="/WEB-INF/tiles/template/baseLayout.jsp">
+		<put-attribute name="title" value="" />
+		<put-attribute name="heading" value="" />
+		<put-attribute name="navigation"
+			value="/WEB-INF/tiles/template/navigation.jsp" />
+		<put-attribute name="content" value="" />
+		<put-attribute name="footer" value="/WEB-INF/tiles/template/footer.jsp" />
+	</definition>
+
+	<definition name="baseLayoutwithChat"
+		template="/WEB-INF/tiles/template/baseLayoutWithChat.jsp">
+		<put-attribute name="title" value="" />
+		<put-attribute name="heading" value="" />
+		<put-attribute name="navigation"
+			value="/WEB-INF/tiles/template/navigation.jsp" />
+		<put-attribute name="content" value="" />
+		<put-attribute name="footer" value="/WEB-INF/tiles/template/footer.jsp" />
+	</definition>
+
+	<definition name="welcome" extends="baseLayoutwithChat">
+		<put-attribute name="title" value="menu.navigate.home" />
+		<put-attribute name="heading" value="menu.navigate.home" />
+		<put-attribute name="content" value="/WEB-INF/views/welcome.jsp" />
+		<put-attribute name="chat" value="/WEB-INF/views/publicChat.jsp" />
+	</definition>
+
+	<definition name="profile" extends="baseLayout">
+		<put-attribute name="title" value="menu.navigate.profile" />
+		<put-attribute name="heading" value="menu.navigate.profile" />
+		<put-attribute name="content" value="/WEB-INF/views/profile.jsp" />
+	</definition>
+
+	<definition name="register" extends="baseLayout">
+		<put-attribute name="title" value="Register" />
+		<put-attribute name="heading" value="Register" />
+		<put-attribute name="content" value="/WEB-INF/views/register.jsp" />
+	</definition>
+
+	<definition name="userNotFount" extends="baseLayout">
+		<put-attribute name="title" value="not.user" />
+		<put-attribute name="heading" value="not.user" />
+		<put-attribute name="content" value="/WEB-INF/views/userNotFound.jsp" />
+	</definition>
+
+	<definition name="users" extends="baseLayout">
+		<put-attribute name="title" value="profile.users" />
+		<put-attribute name="heading" value="profile.users" />
+		<put-attribute name="content" value="/WEB-INF/views/users.jsp" />
+	</definition>
+
+	<definition name="user" extends="baseLayout">
+		<put-attribute name="title" value="my.user" />
+		<put-attribute name="heading" value="my.user" />
+		<put-attribute name="content" value="/WEB-INF/views/user.jsp" />
+	</definition>
+
+	<definition name="updateUser" extends="baseLayout">
+		<put-attribute name="title" value="menu.navigate.user.update" />
+		<put-attribute name="heading" value="menu.navigate.user.update" />
+		<put-attribute name="content" value="/WEB-INF/views/updateUser.jsp" />
+	</definition>
+
+	<definition name="login" extends="baseLayout">
+		<put-attribute name="title" value="menu.navigate.login" />
+		<put-attribute name="heading" value="menu.navigate.login" />
+		<put-attribute name="content" value="/WEB-INF/views/login.jsp" />
+	</definition>
+
+	<definition name="contact" extends="baseLayout">
+		<put-attribute name="title" value="menu.navigate.contact" />
+		<put-attribute name="heading" value="menu.navigate.contact" />
+		<put-attribute name="content" value="/WEB-INF/views/contact.jsp" />
+	</definition>
+
+	<definition name="roomGame" extends="baseLayoutwithChat">
+		<put-attribute name="title" value="menu.navigate.game" />
+		<put-attribute name="heading" value="menu.navigate.game" />
+		<put-attribute name="content" value="/WEB-INF/views/roomGame.jsp" />
+		<put-attribute name="chat" value="/WEB-INF/views/roomChat.jsp" />
+	</definition>
+
+	<definition name="rooms" extends="baseLayoutwithChat">
+		<put-attribute name="title" value="menu.navigate.home" />
+		<put-attribute name="heading" value="menu.navigate.home" />
+		<put-attribute name="content" value="/WEB-INF/views/rooms.jsp" />
+		<put-attribute name="chat" value="/WEB-INF/views/publicChat.jsp" />
+	</definition>
+
+</tiles-definitions>

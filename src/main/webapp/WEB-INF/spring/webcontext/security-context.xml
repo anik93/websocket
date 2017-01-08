@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:security="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="http://www.springframework.org/schema/security 
+						http://www.springframework.org/schema/security/spring-security.xsd
+						http://www.springframework.org/schema/beans 
+						http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<security:http auto-config="true">
+
+		<security:form-login login-page="/login"
+			default-target-url="/" always-use-default-target="true"
+			authentication-failure-url="/loginfailed" />
+
+		<security:logout logout-success-url="/logout"
+			delete-cookies="JSESSIONID, remember-me" />
+
+		<security:session-management
+			invalid-session-url="/login">
+			<security:concurrency-control
+				max-sessions="1" error-if-maximum-exceeded="true" expired-url="/login" />
+		</security:session-management>
+
+		<security:csrf />
+
+		<security:remember-me token-validity-seconds="86400"
+			remember-me-parameter="remember-me" remember-me-cookie="remember-me"
+			data-source-ref="dataSource" />
+
+	</security:http>
+
+	<security:authentication-manager>
+		<security:authentication-provider>
+			<security:jdbc-user-service
+				data-source-ref="dataSource"
+				users-by-username-query="select userName, password, login from user where userName=?"
+				authorities-by-username-query="select u.userName, r.name from user u join user_role ur on u.id_u=ur.id_u join role r on ur.id_r=r.id_r where u.userName=?" />
+		</security:authentication-provider>
+	</security:authentication-manager>
+
+	<bean id="webSecurityExpressionHandler"
+		class="org.springframework.security.web.access.expression.DefaultWebSecurityExpressionHandler" />
+
+	<bean id="filterMultipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="100000000" />
+	</bean>
+</beans>

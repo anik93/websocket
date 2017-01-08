@@ -1,0 +1,1 @@
+<p>&copy; Mateusz Sobczak</p>
